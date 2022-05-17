@@ -2,7 +2,11 @@ Step 1: Check Virtualization Support in Ubuntu
 
 egrep -c '(vmx|svm)' /proc/cpuinfo
 
+An outcome greater than 0 implies that virtualization is supported. From the output below, we have confirmed that our server is good to go.
+
 sudo kvm-ok
+
+If the “kvm-ok” utility is not present on your server, install it by running
 
 sudo apt install cpu-checker
 
