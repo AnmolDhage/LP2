@@ -1,0 +1,30 @@
+Step 1: Check Virtualization Support in Ubuntu
+
+egrep -c '(vmx|svm)' /proc/cpuinfo
+
+sudo kvm-ok
+
+sudo apt install cpu-checker
+
+sudo kvm-ok
+
+Step 2: Install KVM on Ubuntu 20.04 LTS
+
+sudo apt install -y qemu qemu-kvm libvirt-daemon libvirt-clients bridge-utils virt-manager
+
+sudo systemctl status libvirtd
+
+sudo systemctl enable --now libvirtd
+
+lsmod | grep -i kvm
+
+Step 3: Creating a Virtual Machine in Ubuntu
+
+Create a Virtual Machine via Command Line
+
+sudo virt-install --name=deepin-vm --os-variant=Debian10 --vcpu=2 --ram=2048 --graphics spice --location=/home/Downloads/deepin-20Beta-desktop-amd64.iso --network bridge:vibr0
+
+osinfo-query os
+
+Create a Virtual Machine via virt-manager
+virt-manager
